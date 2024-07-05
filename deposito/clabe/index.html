@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio SubModule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: '#ffffff',
+                    green: '#93F775',
+                    darkGreen: '#164e05',
+                    purple: '#9E70D8',
+                    background: '#000000',
+                    card: '#222222',
+                    cardHover: '#4D4D4D',
+                    lightTeal: '#94DBDA',
+                    orange: '#AE563A',
+                    inputBackground: '#f2f2f2',
+                    inputText: '#8a8a8a',
+                    chartLine: '#E4E4E433'
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-[#0d0d0d] p-8 sm:p-24">
+        <div class="container mx-auto pt-16 flex flex-col gap-8">
+            <div class="flex justify-between">
+                <h1 class="text-2xl text-green">DEPOSITAR</h1>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="size-8 text-green">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+            </div>
+            <h1 class="text-white text-3xl font-semibold mb-4">
+                DEPÓSITO DIRECTO 
+                <span class="text-green">DEPÓSITO CLAVE</span>
+            </h1>
+            <!--Cartel Superior--->
+            <div class="w-full bg-neutral-800 p-8 flex flex-col gap-4 pt-16">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6 text-green">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                    </svg>
+
+                    <p class="text-lg font-semibold text-green">TASA ANUAL DE
+                        9.9%</p>
+                </div>
+                <p class="text-lg text-white">
+                    ¿Necesitas ayuda para hacer tu primera inversión? mientras
+                    antes mejor.
+                    Transforma tu ahorro en inversión, con una tasa anual del
+                    <span class="text-green"> 9.00% </span>
+                    desde
+                    <span class="text-green"> $100 </span>
+                    Registra la siguiente información en la aplicación de tu
+                    banco para realizar depósitos en cualquier momento.
+                </p>
+            </div>
+            <!--Cards--->
+            <div class="mt-8">
+                
+                <div class="mt-4 flex items-center gap-4">
+                    <div>
+                        <p class="text-white text-lg font-semibold">Banco:</p>
+                        <p class="text-green text-xl font-semibold">UNSCORP</p>
+                    </div>
+                    <div>
+                        <p class="text-white text-lg font-semibold">CLABE Smart
+                            Cash</p>
+                        <p
+                            class="text-green text-xl font-semibold">601180400040512189</p>
+                    </div>
+                    <button
+                        class="flex items-center justify-center p-3 w-auto h-full bg-neutral-900 hover:bg-neutral-700 transition-colors duration-300 ease-in-out">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6 text-green">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            
+        </script>
+    </body>
+</html>

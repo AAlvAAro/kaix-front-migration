@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio SubModule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: '#ffffff',
+                    green: '#93F775',
+                    darkGreen: '#164e05',
+                    purple: '#9E70D8',
+                    background: '#000000',
+                    card: '#222222',
+                    cardHover: '#4D4D4D',
+                    lightTeal: '#94DBDA',
+                    orange: '#AE563A',
+                    inputBackground: '#f2f2f2',
+                    inputText: '#8a8a8a',
+                    chartLine: '#E4E4E433'
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-[#0d0d0d] p-8 sm:p-24">
+        <div class="container mx-auto pt-16 flex flex-col gap-8">
+            <div class="flex justify-between">
+                <h1 class="text-2xl text-green">DEPOSITAR</h1>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="size-8 text-green">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+            </div>
+            
+            <!--Cartel Superior--->
+            <div class="w-full bg-neutral-800 p-8 flex flex-col gap-4 pt-16">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6 text-green">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                    </svg>
+
+                    <p class="text-lg font-semibold text-green">TASA ANUAL DE
+                        9.9%</p>
+                </div>
+                <p class="text-lg text-white">
+                    ¿Necesitas ayuda para hacer tu primera inversión? mientras
+                    antes mejor.
+                    Transforma tu ahorro en inversión, con una tasa anual del
+                    <span class="text-green"> 9.00% </span>
+                    desde
+                    <span class="text-green"> $100 </span>
+                    Registra la siguiente información en la aplicación de tu
+                    banco para realizar depósitos en cualquier momento.
+                </p>
+            </div>
+            <!--Cards--->
+            <div class="flex gap-4 flex-col lg:flex-row" id="cardContent">
+
+            </div>
+        </div>
+
+        <script>
+            const CardList = [
+                {
+                    cardTitle: "DEPOSITO ONLINE",
+                    cardSubTitle: "Laoreet velit parturient ullamcorper sociosqu a ullamcorper mi a id odio cursus nullam parturient tincidunt cubilia proin sodales ac.",
+                    link: 'online'
+                }, 
+                {
+                    cardTitle: "DEPOSITO CLABE",
+                    cardSubTitle: "Laoreet velit parturient ullamcorper sociosqu a ullamcorper mi a id odio cursus nullam parturient tincidunt cubilia proin sodales ac.",
+                    link: 'clabe'
+                }
+            ]
+            
+            CardList.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.class = 'w-full flex flex-col justify-start gap-8';
+                
+                cardElement.innerHTML = `
+                <a
+                    class='relative w-full h-96 sm:h-80  bg-background flex items-center justify-center cursor-pointer group'
+                    href='/deposito/${card.link}'                   
+                >
+                    <div class='transition-opacity duration-300 absolute w-full h-full z-0'>
+                        <img class='w-full h-full object-cover' src={back} alt="Background GIF" />
+                    </div>
+
+                    <div class="w-3/4 flex flex-col items-center z-10 gap-4">
+                        <h1 class="text-white text-lg text-center font-semibold tracking-[6px] sm:text-2xl sm:tracking-[15px] group-hover:text-green transition-colors duration-300 ease-in-out">${card.cardTitle}</h1>
+                        <p class="text-white text-md text-center w-3/4">${card.cardSubTitle}</p>
+                    </div>
+                </a>
+                `;
+
+                const cardContent = document.getElementById('cardContent');
+                cardContent.appendChild(cardElement);
+
+                const hoverDiv = cardElement.querySelector('.relative .transition-opacity');
+                const relativeDiv = cardElement.querySelector('.relative');
+                
+                relativeDiv.addEventListener('mouseover', () => {
+                    hoverDiv.classList.remove('opacity-0');
+                    hoverDiv.classList.add('opacity-20');
+                });
+
+                relativeDiv.addEventListener('mouseleave', () => {
+                    hoverDiv.classList.remove('opacity-20');
+                    hoverDiv.classList.add('opacity-0');
+                });
+        });
+
+        </script>
+    </body>
+</html>
