@@ -28,72 +28,187 @@
             }
         </script>
     </head>
-    <body class="bg-[#0d0d0d]">
-        <div class="p-8 sm:p-24 w-full flex flex-col">
-            <h1
-                class="text-5xl sm:text-6xl font-bold text-center sm:text-left mb-8 text-primary">
-                HOLA <span class="text-green">JORGE HERNANDEZ</span>
-            </h1>
-            <div class="flex gap-4 flex-col lg:flex-row" id="cardContent">
+    <body class="bg-[#0d0d0d] p-8 sm:p-24">
+        <div class="w-full h-screen flex flex-col items-center p-8 sm:p-24">
+            <div class="self-start mt-8 flex justify-between w-full">
+                <h1
+                    class="text-green text-xl font-semibold whitespace-nowrap tracking-[3px] sm:tracking-[15px] w-full">
+                    ANALISIS FINANCIERO
+                </h1>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="size-6 text-green">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                </svg>
 
             </div>
+
+            <div
+                class="px-8 py-8 mt-8 bg-cards w-full flex flex-col justify-between bg-card">
+                <p class="text-green text-base font-semibold m-0 p-0">
+                    BUSCAR ENTRADAS
+                </p>
+                <input placeHolder='Buscar entrada'
+                    class="bg-[#1f1f1f] text-white border border-gray-500 rounded-md px-4 py-2 mt-2 focus:outline-none focus:border-green" />
+            </div>
+            <div class="mt-8 w-full grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div
+                    class="overflow-y-auto w-full flex flex-col gap-8 pb-20 md:col-span-3"
+                    id="bigCards">
+                    <!--Big Cards-->
+                </div>
+                <div
+                    class="overflow-y-auto w-full flex flex-col gap-8 pb-20 md:col-span-1 items-start"
+                    id="miniCards">
+                    <!--Mini Cards-->
+                </div>
+            </div>
         </div>
+
         <script>
-            const CardList = [
+            const bigCards = [
                 {
-                    title: "HISTORIAL DE MOVIMIENTOS",
-                    subTitle: "(aun no cuentas con movimientos, empieza realizando tu primer movimiento)",
-                    buttonText: "Realiza tu primer deposito",
-                    cardTitle: "PRIVATEX",
-                    cardSubTitle: "Laoreet velit parturient ullamcorper sociosqu a ullamcorper mi a id odio cursus nullam parturient tincidunt cubilia proin sodales ac."
-                }, 
+                    pic: '../assets/analisis/calculator-square.jpg',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
                 {
-                    title: "Ahora es el momento",
-                    subTitle: "¿Necesitas ayuda para hacer tu primera inversión? mientras antes mejor",
-                    buttonText: "Realiza la primera inversión",
-                    cardTitle: "FUNDX",
-                    cardSubTitle: "Laoreet velit parturient ullamcorper sociosqu a ullamcorper mi a id odio cursus nullam parturient tincidunt cubilia proin sodales ac."
-                }
-            ]
-            
-            CardList.forEach(card => {
-                const cardElement = document.createElement('div');
-                cardElement.className = 'w-full flex flex-col justify-start gap-8';
-                
-                cardElement.innerHTML = `
-                    <div class="flex flex-col gap-4">
-                        <p class="text-primary text-lg font-light tracking-[5px]">${card.title}</p>
-                        <p class="text-primary text-lg">${card.subTitle}</p>
-                        <button class="bg-black text-green p-2 border-b-2 border-green hover:bg-green hover:text-black transition-color duration-300 ease-in-out">${card.buttonText}</button>
-                    </div>
-                    <div class="relative h-80 bg-black flex items-center justify-center cursor-pointer">
-                        <div class="transition-opacity duration-300 absolute w-full h-full z-0 opacity-0">
-                            <img class="w-full h-full object-cover" src="path/to/your/image.gif" alt="Background GIF" />
-                        </div>
-                        <div class="w-96 flex flex-col items-center z-10">
-                            <h1 class="text-primary text-2xl">${card.cardTitle}</h1>
-                            <p class="text-primary text-lg text-center">${card.cardSubTitle}</p>
-                        </div>
-                    </div>
-                `;
+                    pic: '../assets/analisis/rectangle.png',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
+                {
+                    pic: '../assets/analisis/calculator-square.jpg',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
+                {
+                    pic: '../assets/analisis/rectangle.png',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
+                {
+                    pic: '../assets/analisis/calculator-square.jpg',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
+                {
+                    pic: '../assets/analisis/rectangle.png',
+                    title: 'Parturient lectus integer malesuadatpat condi',
+                    text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                },
+            ];
 
-                const cardContent = document.getElementById('cardContent');
-                cardContent.appendChild(cardElement);
+                const miniCards = [
+                    {
+                        pic: '../assets/analisis/mini-1.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                    {
+                        pic: '../assets/analisis/mini-2.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                    {
+                        pic: '../assets/analisis/mini-1.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                    {
+                        pic: '../assets/analisis/mini-2.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                    {
+                        pic: '../assets/analisis/mini-1.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                    {
+                        pic: '../assets/analisis/mini-2.png',
+                        date: '30/Sep/2023',
+                        title: 'Parturient lectus integer malesuadatpat condi',
+                        text: 'Cursus semper tempus inceptos vestibulum natoque amet blandit commodo in vestibulum egestas leo ad interdum elit condimentum congue primis a interdum parturient elementum a augue ad sed tellus.',
+                    },
+                ];
 
-                const hoverDiv = cardElement.querySelector('.relative .transition-opacity');
-                const relativeDiv = cardElement.querySelector('.relative');
-                
-                relativeDiv.addEventListener('mouseover', () => {
-                    hoverDiv.classList.remove('opacity-0');
-                    hoverDiv.classList.add('opacity-20');
+
+                bigCards.forEach(card => {
+                    const container = document.getElementById('bigCards');
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'flex flex-col gap-4';
+                    
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = 'h-72';
+                    const image = document.createElement('img');
+                    image.className = 'w-full h-full object-cover';
+                    image.src = card.pic;
+                    image.alt = 'Big Card Image';
+                    imageDiv.appendChild(image);
+                    cardDiv.appendChild(imageDiv);
+                    
+                    const title = document.createElement('p');
+                    title.className = 'text-green text-lg font-semibold';
+                    title.textContent = card.title;
+                    cardDiv.appendChild(title);
+                    
+                    const text = document.createElement('p');
+                    text.className = 'text-white text-base';
+                    text.textContent = card.text;
+                    cardDiv.appendChild(text);
+                    
+                    const button = document.createElement('button');
+                    button.textContent = 'Ver más';
+                    button.className = 'border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out';
+                    cardDiv.appendChild(button);
+
+                    
+                    container.appendChild(cardDiv);
                 });
 
-                relativeDiv.addEventListener('mouseleave', () => {
-                    hoverDiv.classList.remove('opacity-20');
-                    hoverDiv.classList.add('opacity-0');
-                });
-        });
+                miniCards.forEach(card => {
+                    const container = document.getElementById('miniCards');
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'flex flex-col gap-1.5 mb-6';
 
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = 'h-28 w-full';
+                    const image = document.createElement('img');
+                    image.className = 'w-full h-full object-cover';
+                    image.src = card.pic;
+                    image.alt = 'Mini Card Image';
+                    imageDiv.appendChild(image);
+                    cardDiv.appendChild(imageDiv);
+
+                    const title = document.createElement('p');
+                    title.className = 'text-green text-base font-semibold';
+                    title.textContent = card.title;
+                    cardDiv.appendChild(title);
+
+                    const date = document.createElement('p');
+                    date.className = 'text-white text-base';
+                    date.textContent = card.date;
+                    cardDiv.appendChild(date);
+
+                    const text = document.createElement('p');
+                    text.className = 'text-white text-base';
+                    text.textContent = card.text;
+                    cardDiv.appendChild(text);
+                    
+                    const button = document.createElement('button');
+                    button.textContent = 'Ver más';
+                    button.className = 'border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out';
+                    cardDiv.appendChild(button);
+
+                    container.appendChild(cardDiv);
+                });
         </script>
     </body>
 </html>

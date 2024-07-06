@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio SubModule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: '#ffffff',
+                    green: '#93F775',
+                    darkGreen: '#164e05',
+                    purple: '#9E70D8',
+                    background: '#000000',
+                    card: '#222222',
+                    cardHover: '#4D4D4D',
+                    lightTeal: '#94DBDA',
+                    orange: '#AE563A',
+                    inputBackground: '#f2f2f2',
+                    inputText: '#8a8a8a',
+                    chartLine: '#E4E4E433'
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-[#0d0d0d] p-8 sm:p-24 flex flex-col gap-6">
+        <div class="flex justify-between">
+            <div class="w-full flex flex-col items-center mb-24">
+                <div class="w-full pt-20">
+                    <div class="flex justify-between mb-8">
+                        <div class="text-white w-full">
+                            <h1 class="text-lg font-semibold">Inversión de 10
+                                meses</h1>
+                            <div class="flex flex-col mt-2">
+                                <p>Valor actual:</p>
+                                <span
+                                    class='text-xl sm:text-3xl w-full  text-green'>0.00
+                                    MXN</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <h1
+                                class="text-lg font-semibold bg-lightTeal text-black  py-1 w-32 text-center">FundX</h1>
+                            <div class="flex flex-col mt-2 items-end">
+                                <p class='text-primary'>Rendimiento</p>
+                                <span
+                                    class='text-xl sm:text-3xl w-full text-orange'>0.00
+                                    %</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="w-full flex flex-col lg:flex-row justify-between gap-8">
+                    <div class="w-full lg:w-1/4">
+                        <button
+                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">Invertir
+                            Fondos</button>
+                    </div>
+                    <div
+                        class="flex flex-col lg:flex-row items-center md:items-start lg:items-center justify-center sm:justify-end gap-3 lg:w-1/2">
+                        <p
+                            class="text-white  text-left lg:text-right w-full md:w-1/4 lg:w-full">
+                            <span class='text-purple'>Enero</span> a <span
+                                class='text-purple'>febrero</span>
+                        </p>
+                        <button
+                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">Personalizar</button>
+                    </div>
+                </div>
+                <div class="w-full pt-20 pb-8">
+                    <div class='flex flex-row items-center gap-12 mb-6'>
+                        <h3 class='text-lg text-primary'> <span
+                                class='text-purple text-6xl'>.</span>Depósitos
+                        </h3>
+                        <h3 class='text-lg text-primary'> <span
+                                class='text-green text-6xl'>.</span>
+                            Rendimientos </h3>
+                    </div>
+                    <div class="flex justify-start text-white gap-12 pb-8">
+                        <span
+                            class="cursor-pointer tracking-[5px] text-green">Historial</span>
+                        <span
+                            class="cursor-pointer tracking-[5px] hover:text-green transition-colors duration-300">
+                            Movimientos
+                        </span>
+                    </div>
+                    <div class='mb-6'>
+                        <div id="myChart"></div>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-6 w-full flex-col sm:flex-row sm:justify-end">
+                        <button
+                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">Retirar
+                            Fondos</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            const deposits = [
+                { name: 'Enero', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Febrero', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Marzo', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Abril', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Mayo', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Junio', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Julio', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Agosto', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Septiembre', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Octubre', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Noviembre', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+                { name: 'Diciembre', Depositos: Math.floor(Math.random() * 1000), Rendimientos: Math.floor(Math.random() * 1000) },
+            ].map(item => ({ ...item, Promedio: (item.Depositos + item.Rendimientos) / 2 }));
+
+            Highcharts.chart('myChart', {
+                chart: {
+                    backgroundColor: null
+                }, 
+                title: {
+                    text: '',
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    },
+                    lineColor: '#E4E4E433',
+                    lineWidth: 1,
+                    labels: {
+                        style: {
+                            color: '#999999' 
+                        }
+                    },
+                    gridLineColor: '#444444',
+                },
+                xAxis: {
+                    categories: deposits.map(item => item.name),
+                    accessibility: {
+                        rangeDescription: 'Range: 2010 to 2020'
+                    },
+                    lineColor: '#3b3b3b',
+                    lineWidth: 1,
+                    labels: {
+                        style: {
+                            color: '#999999' 
+                        }
+                    },
+                    gridLineColor: '#444444',
+                },
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                    }
+                },
+                series: [{
+                    name: 'Depositos',
+                    data: deposits.map(item => item.Depositos),
+                    color: '#9E70D8',
+                }, {
+                    name: 'Rendimientos',
+                    data: deposits.map(item => item.Rendimientos),
+                    color: '#93F775',
+                }],
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+            });
+        </script>
+    </body>
+</html>
