@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio SubModule</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: '#ffffff',
+                    green: '#93F775',
+                    darkGreen: '#164e05',
+                    purple: '#9E70D8',
+                    background: '#000000',
+                    card: '#222222',
+                    cardHover: '#4D4D4D',
+                    lightTeal: '#94DBDA',
+                    orange: '#AE563A',
+                    inputBackground: '#f2f2f2',
+                    inputText: '#8a8a8a',
+                    chartLine: '#E4E4E433'
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-[#0d0d0d] p-8 sm:p-24 flex flex-col gap-6">
+        <div class="flex justify-between">
+            <div class="w-full flex flex-col items-center mb-24">
+                <!--Header-->
+                <div class="w-full pt-20">
+                    <div class="flex justify-between">
+                        <h1
+                            class="text-green text-2xl font-semibold">FONDOS</h1>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6 text-green">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                </div>
+                <!--Funds-->
+                <div
+                    class="w-full flex flex-col lg:flex-row justify-between gap-8">
+
+                    <div
+                        class="flex justify-between items-start flex-col gap-6">
+                        <p class="text-white text-base">Tus fondos</p>
+                        <h1
+                            class="text-5xl font-semibold text-green flex items-center gap-2 font-[Rajdhani]">
+                            $135,000.56
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                            </svg>
+
+                        </h1>
+
+                    </div>
+                    <div
+                        class="flex flex-col lg:flex-row items-start lg:items-center justify-center sm:justify-end gap-3 lg:w-1/2">
+                        <p
+                            class="text-purple text-sm cursor-pointer mr-4">Enero
+                            <span class='text-primary'>a</span> Febrero</p>
+                        <button
+                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">
+                            Personalizar
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full pt-20 pb-8">
+                    <div class='flex flex-row items-center gap-12 mb-6'>
+                        <h3 class='text-lg text-primary'> <span
+                                class='text-purple text-6xl'>.</span>Depósitos
+                        </h3>
+                        <h3 class='text-lg text-primary'> <span
+                                class='text-green text-6xl'>.</span>
+                            Rendimientos </h3>
+                    </div>
+                    <div class="flex justify-start text-white gap-12 pb-8">
+                        <a href="/fondos/"
+                            class="cursor-pointer tracking-[5px] text-white hover:text-green transition-colors duration-300">Historial</a>
+                        <a href="/fondos/movimientos/"
+                            class="cursor-pointer tracking-[5px] text-green">
+                            Movimientos
+                        </a>
+                    </div>
+                    <!--Movements Table-->
+                    <div class='relative overflow-x-auto mb-8'>
+                        <table class="w-full my-6">
+                            <thead class='pb-3'>
+                                <tr>
+                                    <th
+                                        class='text-green text-left pb-8 px-4 min-w-48'>Movimiento</th>
+                                    <th
+                                        class='text-green text-left pb-8 px-4 min-w-48'>Fecha</th>
+                                    <th
+                                        class='text-green text-left pb-8 px-4 min-w-48'>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="movementsInnerTable">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div
+                    class="w-full flex justify-start">
+                    <button
+                        id="openModalButton"
+                        class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">
+                        Retirar Fondos
+                    </button>
+                </div>
+
+                <!--Modal-->
+                <div id="withdrawModal"
+                    class="fixed inset-0 flex items-center justify-center z-50 invisible backdrop-blur-sm">
+                    <div class="flex items-center justify-center w-full h-full">
+                        <form
+                            class="bg-white text-black p-8 flex flex-col items-center text-center gap-4 w-3/4">
+                            <h1
+                                class="text-2xl uppercase tracking-widest mb-0">Retirar
+                                deposito</h1>
+                            <p class="font-normal">Agrega una cuenta bancaria,
+                                en la cual puedas
+                                retirar tu efectivo.</p>
+                            <div class="flex flex-col w-full gap-4 items-start">
+                                <label for="account">Cuenta</label>
+                                <input
+                                    type="text"
+                                    id="account"
+                                    placeholder="Seleccionar"
+                                    class="bg-inputBackground text-inputText w-full rounded-none p-4 focus:outline-none disabled:bg-gray-50 disabled:text-gray-200">
+                            </div>
+                            <button
+                                class="w-full border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">
+                                Retirar
+                            </button>
+                            <button
+                                id="closeModalButton"
+                                class=" w-full hover:bg-slate-100 py-2 transition-colors duration-300 ease-in-out min-w-48">
+                                Cancelar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const movements = [
+            {
+                type: 'Deposito',
+                date: '30 / Sep / 2023 20:35',
+                amount: 1350.0,
+            },
+            {
+                type: 'Retiro',
+                date: '30 / Sep / 2023 20:35',
+                amount: -50.0,
+            },
+            {
+                type: 'Movimiento a estrategia',
+                date: '30 / Sep / 2023 20:35',
+                amount: 1350.0,
+            },
+            {
+                type: 'Retiro',
+                date: '30 / Sep / 2023 20:35',
+                amount: -50.0,
+            },
+            {
+                type: 'Rendimiento Smart Cash',
+                date: '30 / Sep / 2023 20:35',
+                amount: 35.0,
+            },
+            {
+                type: 'Deposito',
+                date: '30 / Sep / 2023 20:35',
+                amount: 1350.0,
+            },
+            {
+                type: 'Retiro',
+                date: '30 / Sep / 2023 20:35',
+                amount: -50.0,
+            },
+        ]
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        });
+
+        const tableBody = document.getElementById('movementsInnerTable');
+
+        movements.forEach((movement, index) => {
+            const row = document.createElement('tr');
+            const typeCell = document.createElement('td');
+            const dateCell = document.createElement('td');
+            const amountCell = document.createElement('td');
+
+            typeCell.textContent = movement.type;
+            typeCell.classList.add('text-primary', 'pb-2', 'px-4');
+
+            dateCell.textContent = movement.date;
+            dateCell.classList.add('text-primary', 'pb-2', 'px-4');
+
+            amountCell.textContent = formatter.format(movement.amount);
+            amountCell.classList.add('text-primary', 'pb-2', 'px-4');
+
+            row.appendChild(typeCell);
+            row.appendChild(dateCell);
+            row.appendChild(amountCell);
+
+            tableBody.appendChild(row);
+        });
+        
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const openModalButton = document.getElementById('openModalButton');
+            const closeModalButton = document.getElementById('closeModalButton');
+            const withdrawModal = document.getElementById('withdrawModal');
+
+            openModalButton.addEventListener('click', () => {
+                withdrawModal.classList.remove('invisible');
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                withdrawModal.classList.add('hidden');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === withdrawModal) {
+                withdrawModal.classList.add('visible');
+                }
+            });
+            });
+        </script>
+    </body>
+</html>

@@ -4,6 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inicio SubModule</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script
@@ -40,10 +45,10 @@
     <body class="bg-[#0d0d0d] p-8 sm:p-24 flex flex-col gap-6">
         <div class="flex justify-between">
             <div class="w-full flex flex-col items-center mb-24">
-                <div class="w-full pt-10">
+                <div class="w-full pt-20">
                     <div class="flex justify-between">
                         <h1
-                            class="text-green text-2xl font-semibold">MIS INVERSIONES</h1>
+                            class="text-green text-2xl font-semibold">FONDOS</h1>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6 text-green">
@@ -51,45 +56,36 @@
                                 d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                     </div>
-                    <div class="flex justify-between pt-10">
-                        <div class="text-white w-full">
-                            <h1 class="text-lg font-semibold">Inversión de 10
-                                meses</h1>
-                            <div class="flex flex-col mt-2">
-                                <p>Valor actual:</p>
-                                <span
-                                    class='text-xl sm:text-3xl w-full  text-green'>0.00
-                                    MXN</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-start">
-                            <h1
-                                class="text-lg font-semibold bg-lightTeal text-black  py-1 w-32 text-center">FundX</h1>
-                            <div class="flex flex-col mt-2 items-end">
-                                <p class='text-primary'>Rendimiento</p>
-                                <span
-                                    class='text-xl sm:text-3xl w-full text-orange'>0.00
-                                    %</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div
                     class="w-full flex flex-col lg:flex-row justify-between gap-8">
-                    <div class="w-full lg:w-1/4 pt-8">
-                        <button
-                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">Invertir
-                            Fondos</button>
+
+                    <div
+                        class="flex justify-between items-start flex-col gap-6">
+                        <p class="text-white text-base">Tus fondos</p>
+                        <h1
+                            class="text-5xl font-semibold text-green flex items-center gap-2 font-[Rajdhani]">
+                            $135,000.56
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                            </svg>
+
+                        </h1>
+
                     </div>
                     <div
-                        class="flex flex-col lg:flex-row items-center md:items-start lg:items-center justify-center sm:justify-end gap-3 lg:w-1/2">
+                        class="flex flex-col lg:flex-row items-start lg:items-center justify-center sm:justify-end gap-3 lg:w-1/2">
                         <p
-                            class="text-white  text-left lg:text-right w-full md:w-1/4 lg:w-full">
-                            <span class='text-purple'>Enero</span> a <span
-                                class='text-purple'>febrero</span>
-                        </p>
+                            class="text-purple text-sm cursor-pointer mr-4">Enero
+                            <span class='text-primary'>a</span> Febrero</p>
                         <button
-                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">Personalizar</button>
+                            class="border-b-2 border-green bg-background text-green hover:text-black hover:bg-green py-2 transition-colors duration-300 ease-in-out min-w-48">
+                            Personalizar
+                        </button>
                     </div>
                 </div>
                 <div class="w-full pt-20 pb-8">
@@ -102,9 +98,9 @@
                             Rendimientos </h3>
                     </div>
                     <div class="flex justify-start text-white gap-12 pb-8">
-                        <a href="/monitoreo/investmentId/"
+                        <a href="/fondos/"
                             class="cursor-pointer tracking-[5px] text-green">Historial</a>
-                        <a href="/monitoreo/investmentId/movimientos/"
+                        <a href="/fondos/movimientos/"
                             class="cursor-pointer tracking-[5px] hover:text-green transition-colors duration-300">
                             Movimientos
                         </a>
