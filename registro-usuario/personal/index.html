@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio SubModule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    primary: '#ffffff',
+                    green: '#93F775',
+                    darkGreen: '#164e05',
+                    purple: '#9E70D8',
+                    background: '#000000',
+                    card: '#222222',
+                    cardHover: '#4D4D4D',
+                    lightTeal: '#94DBDA',
+                    orange: '#AE563A',
+                    inputBackground: '#f2f2f2',
+                    inputText: '#8a8a8a',
+                    chartLine: '#E4E4E433'
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    <body class="bg-white p-8 sm:p-24 flex flex-col gap-6">
+        
+        <h1 class='text-3xl tracking-[8px]'>DATOS PERSONALES</h1>
+        <p class='text-purple text-xl font-semibold mb-6'>Ingresa tu información</p>
+        <form>
+            <div class='flex flex-col lg:flex-wrap lg:justify-between' id="formContainer">
+
+            </div>
+        </form>
+        <script>
+            const PersonalDataFormfields = [
+                { name: 'name', title: 'Nombre', placeholder: 'Nombre(s) completo', type: 'text', required: true },
+                { name: 'lastName', title: 'Apellido Paterno', placeholder: 'Apellido Paterno', type: 'text', required: true },
+                { name: 'secondLastName', title: 'Apellido Materno', placeholder: 'Apellido Materno', type: 'text', required: false },
+                { name: 'gender', title: 'Género', placeholder: 'Seleccionar', type: 'text', options: ['Masculino', 'Femenino'] },
+                { 
+                    name: 'state', 
+                    title: 'Entidad de nacimiento', 
+                    placeholder: 'Seleccionar', 
+                    type: 'text', 
+                    options: [
+                        'Aguascalientes',
+                        'Baja California',
+                        'Baja California Sur',
+                        'Campeche',
+                        'Chiapas',
+                        'Chihuahua',
+                        'Coahuila',
+                        'Colima',
+                        'Ciudad de México',
+                        'Durango',
+                        'Guanajuato',
+                        'Guerrero',
+                        'Hidalgo',
+                        'Jalisco',
+                        'México',
+                        'Michoacán',
+                        'Morelos',
+                        'Nayarit',
+                        'Nuevo León',
+                        'Oaxaca',
+                        'Puebla',
+                        'Querétaro',
+                        'Quintana Roo',
+                        'San Luis Potosí',
+                        'Sinaloa',
+                        'Sonora',
+                        'Tabasco',
+                        'Tamaulipas',
+                        'Tlaxcala',
+                        'Veracruz',
+                        'Yucatán',
+                        'Zacatecas'
+                    ], 
+                    required: true 
+                },    
+                { name: 'birthDate', title: 'Fecha de Nacimiento', placeholder: 'DD/MM/AAAA', type: 'date', required: true },
+                { name: 'phone', title: 'No. Celular', placeholder: '000-000-0000', type: 'tel', required: true },
+                { name: 'rfc', title: 'RFC', placeholder: 'Registro Federal de Contribuyentes', type: 'text', fiscal: true },
+                { name: 'homoclave', title: 'Homoclave', placeholder: '3 Dígitos', type: 'text', fiscal: true },
+                { name: 'hasRFC', title: '¿Tienes RFC?', type: 'checkbox' }
+            ];
+
+            const formContainer = document.getElementById("formContainer");
+            let currentRow = null;
+            let hasRFCChecked = false;
+
+            const handleCheckboxChange = (event) => {
+                hasRFCChecked = event.target.checked;
+                renderForm();
+            };
+
+            const renderForm = () => {
+                formContainer.innerHTML = ''; // Clear the form container
+
+                PersonalDataFormfields.forEach((field, index) => {
+                    // Forzar una nueva fila para el campo de phone
+                    if (field.name === 'phone') {
+                        currentRow = document.createElement("div");
+                        currentRow.classList.add("flex", "flex-wrap", "mb-4", "gap-4");
+                        formContainer.appendChild(currentRow);
+
+                        const inputContainer = document.createElement("div");
+                        inputContainer.classList.add("flex", "flex-col", "gap-2", "flex-1");
+
+                        const label = document.createElement("label");
+                        label.textContent = field.title;
+                        label.classList.add("text-black", "text-lg");
+                        inputContainer.appendChild(label);
+
+                        const input = document.createElement("input");
+                        input.classList.add("bg-inputBackground", "text-inputText", "p-2", "rounded");
+                        input.type = field.type;
+                        input.name = field.name;
+                        input.placeholder = field.placeholder;
+                        input.required = field.required;
+                        inputContainer.appendChild(input);
+
+                        currentRow.appendChild(inputContainer);
+
+                        // Reiniciar la fila después de agregar el campo de celular
+                        currentRow = null;
+                    } else if (field.name === 'rfc' || field.name === 'homoclave' || field.name === 'hasRFC') {
+                        if (!currentRow || !currentRow.classList.contains('flex-wrap-rfc')) {
+                            currentRow = document.createElement("div");
+                            currentRow.classList.add("flex", "flex-wrap", "mb-4", "gap-4", "flex-wrap-rfc");
+                            formContainer.appendChild(currentRow);
+                        }
+
+                        const inputContainer = document.createElement("div");
+                        inputContainer.classList.add("flex", "flex-col", "gap-2", "flex-1");
+
+                        const label = document.createElement("label");
+                        label.textContent = field.title;
+                        label.classList.add("text-black", "text-lg");
+                        inputContainer.appendChild(label);
+
+                        if (field.type === 'checkbox') {
+                            const checkbox = document.createElement("input");
+                            checkbox.type = 'checkbox';
+                            checkbox.classList.add("bg-inputBackground", "text-inputText", "p-2", "rounded");
+                            checkbox.name = field.name;
+                            checkbox.checked = hasRFCChecked;
+                            checkbox.addEventListener('change', handleCheckboxChange);
+                            inputContainer.appendChild(checkbox);
+                        } else {
+                            const input = document.createElement("input");
+                            input.classList.add("bg-inputBackground", "text-inputText", "p-2", "rounded");
+                            input.type = field.type;
+                            input.name = field.name;
+                            input.placeholder = field.placeholder;
+                            input.required = field.required;
+                            if (field.fiscal && !hasRFCChecked) {
+                                input.disabled = true;
+                            }
+                            inputContainer.appendChild(input);
+                        }
+
+                        currentRow.appendChild(inputContainer);
+                    } else {
+                        if (index % 3 === 0 || !currentRow) {
+                            currentRow = document.createElement("div");
+                            currentRow.classList.add("flex", "flex-col","sm:flex-row", "flex-wrap", "mb-4", "gap-4");
+                            formContainer.appendChild(currentRow);
+                        }
+
+                        const inputContainer = document.createElement("div");
+                        inputContainer.classList.add("flex", "flex-col", "gap-2", "flex-1", "sm:1/3", "w-full");
+
+                        const label = document.createElement("label");
+                        label.textContent = field.title;
+                        label.classList.add("text-black", "text-lg");
+                        inputContainer.appendChild(label);
+
+                        if (field.options) {
+                            const select = document.createElement("select");
+                            select.classList.add("bg-inputBackground", "text-inputText", "px-2", "py-4");
+                            select.name = field.name;
+                            select.required = field.required;
+
+                            field.options.forEach(option => {
+                                const optionElement = document.createElement("option");
+                                optionElement.value = option;
+                                optionElement.textContent = option;
+                                select.appendChild(optionElement);
+                            });
+
+                            inputContainer.appendChild(select);
+                        } else {
+                            const input = document.createElement("input");
+                            input.classList.add("bg-inputBackground", "text-inputText", "p-2", "px-2", "py-4");
+                            input.type = field.type;
+                            input.name = field.name;
+                            input.placeholder = field.placeholder;
+                            input.required = field.required;
+                            inputContainer.appendChild(input);
+                        }
+
+                        currentRow.appendChild(inputContainer);
+                    }
+                });
+            };
+
+            document.addEventListener('DOMContentLoaded', renderForm);
+        </script>
+    </body>
+</html>
